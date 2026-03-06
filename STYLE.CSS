@@ -1,35 +1,41 @@
+/* ============================================================
+   MEN'S BARBERSHOP — ELEGANTE & REFINADO
+   Fontes: Cormorant Garamond (títulos) + Montserrat (texto)
+   ============================================================ */
+
 :root {
-    --gold: #c9a84c;
-    --gold-light: #f1c40f;
-    --black: #0a0a0a;
-    --dark: #111111;
-    --dark2: #1a1a1a;
-    --dark3: #222222;
-    --white: #f5f0e8;
-    --gray: #888;
-    --radius: 12px;
-    --transition: 0.3s ease;
+    --gold:       #b8965a;
+    --gold-light: #d4a96a;
+    --gold-dim:   rgba(184, 150, 90, 0.15);
+    --black:      #080808;
+    --dark:       #0f0f0f;
+    --dark2:      #161616;
+    --dark3:      #1e1e1e;
+    --white:      #f0ebe2;
+    --gray:       #7a7a7a;
+    --gray-light: rgba(240, 235, 226, 0.55);
+    --radius:     10px;
+    --transition: 0.35s ease;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: var(--black);
     color: var(--white);
     overflow-x: hidden;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
 }
 
-
-
+/* ============================================================
+   HEADER
+   ============================================================ */
 #header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -37,54 +43,63 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 60px;
-    background: rgba(10, 10, 10, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    padding: 22px 64px;
+    background: rgba(8, 8, 8, 0.94);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(184, 150, 90, 0.18);
     transition: var(--transition);
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
-.logo-icon {
-    font-size: 28px;
-    color: var(--gold);
+.logo-divider {
+    display: block;
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
 }
 
-.logo h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 2px;
+.logo-text {
+    text-align: center;
+}
+
+.logo-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 4px;
     line-height: 1;
     color: var(--white);
+    text-transform: uppercase;
 }
 
 .logo-sub {
-    font-size: 9px;
-    letter-spacing: 5px;
+    font-size: 8px;
+    letter-spacing: 6px;
     color: var(--gold);
     font-weight: 600;
     display: block;
+    margin-top: 3px;
+    text-transform: uppercase;
 }
 
 nav ul {
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: 40px;
     list-style: none;
 }
 
 nav a {
-    color: rgba(245, 240, 232, 0.75);
+    color: var(--gray-light);
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 1px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     transition: var(--transition);
 }
@@ -94,18 +109,19 @@ nav a:hover {
 }
 
 .btn-nav {
-    background: var(--gold) !important;
-    color: var(--black) !important;
-    padding: 10px 22px;
-    border-radius: 6px;
-    font-weight: 600 !important;
-    font-size: 13px !important;
+    background: transparent !important;
+    border: 1px solid var(--gold) !important;
+    color: var(--gold) !important;
+    padding: 9px 22px !important;
+    border-radius: 2px !important;
+    font-size: 10px !important;
+    letter-spacing: 2.5px !important;
     transition: var(--transition) !important;
 }
 
 .btn-nav:hover {
-    background: var(--gold-light) !important;
-    transform: translateY(-1px);
+    background: var(--gold) !important;
+    color: var(--black) !important;
 }
 
 .hamburger {
@@ -113,13 +129,13 @@ nav a:hover {
     background: none;
     border: none;
     color: var(--gold);
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
-    padding: 0;
 }
 
-
-
+/* ============================================================
+   HERO
+   ============================================================ */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -127,59 +143,62 @@ nav a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 120px 20px 80px;
+    padding: 130px 24px 90px;
     position: relative;
     background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
-        linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+        radial-gradient(ellipse 70% 50% at 50% 45%, rgba(184,150,90,0.06) 0%, transparent 65%),
+        var(--black);
     overflow: hidden;
 }
 
 .hero::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
     background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
-        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
+        repeating-linear-gradient(0deg, transparent, transparent 70px, rgba(184,150,90,0.025) 70px, rgba(184,150,90,0.025) 71px),
+        repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(184,150,90,0.025) 70px, rgba(184,150,90,0.025) 71px);
     pointer-events: none;
 }
 
 .hero-badge {
     display: inline-block;
-    border: 1px solid var(--gold);
+    border: 1px solid rgba(184,150,90,0.5);
     color: var(--gold);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-    animation: fadeUp 0.6s ease both;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    padding: 7px 20px;
+    margin-bottom: 36px;
+    text-transform: uppercase;
+    animation: fadeUp 0.7s ease both;
 }
 
 .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 9vw, 100px);
-    font-weight: 900;
-    line-height: 1.05;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(58px, 9vw, 108px);
+    font-weight: 700;
+    line-height: 1.02;
     color: var(--white);
-    margin-bottom: 24px;
-    animation: fadeUp 0.7s ease 0.1s both;
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+    animation: fadeUp 0.7s ease 0.12s both;
 }
 
 .gold {
     color: var(--gold);
+    font-style: italic;
 }
 
 .hero-sub {
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 300;
-    color: rgba(245,240,232,0.65);
-    line-height: 1.7;
-    max-width: 460px;
-    margin-bottom: 40px;
-    animation: fadeUp 0.7s ease 0.2s both;
+    color: var(--gray-light);
+    line-height: 2;
+    max-width: 440px;
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.7s ease 0.22s both;
 }
 
 .hero-btns {
@@ -187,28 +206,29 @@ nav a:hover {
     gap: 16px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 60px;
-    animation: fadeUp 0.7s ease 0.3s both;
+    margin-bottom: 70px;
+    animation: fadeUp 0.7s ease 0.32s both;
 }
 
 .btn-primary {
     background: var(--gold);
     color: var(--black);
     border: none;
-    padding: 16px 36px;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    border-radius: var(--radius);
+    padding: 16px 44px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 2px;
     cursor: pointer;
     transition: var(--transition);
-    font-family: 'Barlow', sans-serif;
 }
 
 .btn-primary:hover {
     background: var(--gold-light);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(201,168,76,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(184,150,90,0.25);
 }
 
 .btn-outline {
@@ -216,11 +236,14 @@ nav a:hover {
     align-items: center;
     background: transparent;
     color: var(--white);
-    border: 1px solid rgba(245,240,232,0.3);
-    padding: 16px 36px;
-    font-size: 15px;
-    font-weight: 400;
-    border-radius: var(--radius);
+    border: 1px solid rgba(240,235,226,0.25);
+    padding: 16px 44px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 2px;
     text-decoration: none;
     transition: var(--transition);
 }
@@ -233,197 +256,365 @@ nav a:hover {
 .hero-stats {
     display: flex;
     align-items: center;
-    gap: 40px;
-    animation: fadeUp 0.7s ease 0.4s both;
+    gap: 50px;
+    animation: fadeUp 0.7s ease 0.42s both;
 }
 
 .stat {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 4px;
 }
 
 .stat strong {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
     color: var(--gold);
+    line-height: 1;
 }
 
 .stat span {
-    font-size: 12px;
-    letter-spacing: 2px;
+    font-size: 9px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--gray);
-    margin-top: 2px;
+    font-weight: 500;
 }
 
 .divider-v {
     width: 1px;
-    height: 40px;
-    background: rgba(201,168,76,0.25);
+    height: 44px;
+    background: linear-gradient(to bottom, transparent, rgba(184,150,90,0.3), transparent);
 }
 
+/* ============================================================
+   SEÇÕES — LABELS E TÍTULOS
+   ============================================================ */
+.section-label {
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
 
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+/* ============================================================
+   SERVIÇOS
+   ============================================================ */
 .servicos {
-    padding: 100px 60px;
+    padding: 110px 64px;
     background: var(--dark);
     text-align: center;
 }
 
-.section-label {
-    font-size: 11px;
-    letter-spacing: 5px;
-    color: var(--gold);
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 60px;
-}
-
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 2px;
+    max-width: 1080px;
     margin: 0 auto;
+    border: 1px solid rgba(184,150,90,0.1);
 }
 
 .card {
     background: var(--dark2);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    padding: 36px 28px;
+    padding: 40px 28px 32px;
     text-align: center;
     transition: var(--transition);
     position: relative;
-    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.03);
 }
 
-.card::before {
+.card::after {
     content: '';
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
+    bottom: 0; left: 50%; right: 50%;
+    height: 1px;
     background: var(--gold);
-    transform: scaleX(0);
     transition: var(--transition);
+    opacity: 0;
 }
 
 .card:hover {
-    border-color: rgba(201,168,76,0.3);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    background: var(--dark3);
+    z-index: 1;
 }
 
-.card:hover::before {
-    transform: scaleX(1);
+.card:hover::after {
+    left: 20%; right: 20%;
+    opacity: 1;
 }
 
 .card.destaque {
-    border-color: rgba(201,168,76,0.4);
-    background: linear-gradient(145deg, #1a1a1a 0%, #1e1a10 100%);
+    background: linear-gradient(160deg, #1a1710 0%, #161616 100%);
+    border-color: rgba(184,150,90,0.25);
 }
 
 .card-badge-popular {
     position: absolute;
-    top: 14px; right: 14px;
-    background: var(--gold);
-    color: var(--black);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    top: 16px; right: 16px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
     padding: 4px 10px;
-    border-radius: 20px;
     text-transform: uppercase;
 }
 
-.card-icon {
-    font-size: 36px;
-    margin-bottom: 16px;
-}
-
 .card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
     color: var(--white);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
 }
 
 .card p {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--gray);
-    line-height: 1.6;
-    margin-bottom: 20px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
 }
 
 .card-preco {
     display: block;
-    font-size: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
     font-weight: 700;
     color: var(--gold);
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    letter-spacing: 1px;
 }
 
 .btn-card {
     background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 24px;
-    font-size: 13px;
+    border: 1px solid rgba(184,150,90,0.4);
+    color: var(--gray-light);
+    padding: 9px 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
     font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: var(--transition);
-    font-family: 'Barlow', sans-serif;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 .btn-card:hover {
-    background: var(--gold);
-    color: var(--black);
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-dim);
 }
 
-
-
-.agenda-section {
-    padding: 100px 60px;
+/* ============================================================
+   PLANOS
+   ============================================================ */
+.planos {
+    padding: 110px 64px;
     background: var(--black);
     text-align: center;
 }
 
+.planos-sub {
+    font-size: 13px;
+    color: var(--gray);
+    max-width: 460px;
+    margin: -40px auto 64px;
+    font-weight: 300;
+    line-height: 2;
+    letter-spacing: 0.3px;
+}
+
+.planos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 24px;
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.plano-card {
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 52px 36px 44px;
+    text-align: center;
+    position: relative;
+    transition: var(--transition);
+}
+
+.plano-card:hover {
+    border-color: rgba(184,150,90,0.3);
+    transform: translateY(-4px);
+}
+
+.plano-card.destaque-plano {
+    border-color: rgba(184,150,90,0.45);
+    background: linear-gradient(170deg, #111008 0%, #111111 100%);
+}
+
+.plano-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    padding: 5px 18px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.plano-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+.plano-card > p {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    font-weight: 300;
+}
+
+.plano-preco {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.plano-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.plano-periodo {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 300;
+}
+
+.plano-items {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 1px solid rgba(184,150,90,0.12);
+    padding-top: 28px;
+}
+
+.plano-items li {
+    font-size: 12px;
+    color: var(--gray-light);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.plano-items li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 10px;
+}
+
+.btn-plano {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(184,150,90,0.4);
+    color: var(--gray-light);
+    padding: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-plano:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-dim);
+}
+
+.btn-plano.destaque-btn {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+}
+
+.btn-plano.destaque-btn:hover {
+    background: var(--gold-light);
+}
+
+/* ============================================================
+   AGENDAMENTOS
+   ============================================================ */
+.agenda-section {
+    padding: 110px 64px;
+    background: var(--dark);
+    text-align: center;
+}
+
 .lista-agendamentos {
-    max-width: 800px;
+    max-width: 820px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 2px;
 }
 
 .empty-state {
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px;
     color: var(--gray);
-}
-
-.empty-state span {
-    font-size: 48px;
-    display: block;
-    margin-bottom: 16px;
-    opacity: 0.5;
+    border: 1px solid rgba(184,150,90,0.08);
 }
 
 .empty-state p {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 2;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gray);
 }
 
 .agendamento-item {
@@ -431,28 +622,30 @@ nav a:hover {
     align-items: center;
     justify-content: space-between;
     background: var(--dark2);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: var(--radius);
-    padding: 20px 28px;
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 22px 30px;
     text-align: left;
     animation: fadeUp 0.4s ease both;
     transition: var(--transition);
 }
 
 .agendamento-item:hover {
-    border-color: rgba(201,168,76,0.25);
+    border-color: rgba(184,150,90,0.2);
 }
 
 .agendamento-info h4 {
-    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
     font-weight: 600;
     color: var(--white);
     margin-bottom: 4px;
+    letter-spacing: 0.5px;
 }
 
 .agendamento-info p {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--gray);
+    letter-spacing: 0.5px;
 }
 
 .agendamento-meta {
@@ -463,81 +656,87 @@ nav a:hover {
 }
 
 .agendamento-servico {
-    background: rgba(201,168,76,0.15);
+    background: var(--gold-dim);
     color: var(--gold);
-    border: 1px solid rgba(201,168,76,0.3);
-    font-size: 12px;
+    border: 1px solid rgba(184,150,90,0.25);
+    font-size: 9px;
     font-weight: 600;
+    letter-spacing: 2px;
     padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .agendamento-data {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--gray);
+    letter-spacing: 0.3px;
 }
 
 .btn-remover {
     background: transparent;
     border: none;
-    color: rgba(255,80,80,0.5);
-    font-size: 16px;
+    color: rgba(255,70,70,0.35);
+    font-size: 14px;
     cursor: pointer;
-    padding: 6px;
-    margin-left: 12px;
-    border-radius: 6px;
+    padding: 6px 10px;
+    margin-left: 16px;
     transition: var(--transition);
-    line-height: 1;
 }
 
 .btn-remover:hover {
     color: #ff5050;
-    background: rgba(255,80,80,0.1);
 }
 
-
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer {
-    background: var(--dark);
-    border-top: 1px solid rgba(201,168,76,0.15);
+    background: var(--black);
+    border-top: 1px solid rgba(184,150,90,0.12);
     text-align: center;
-    padding: 40px 20px;
+    padding: 48px 20px;
 }
 
 .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
     color: var(--gold);
-    margin-bottom: 12px;
-    letter-spacing: 2px;
+    margin-bottom: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
-footer p {
-    font-size: 13px;
+footer > p {
+    font-size: 11px;
     color: var(--gray);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
 }
 
 .footer-links {
     display: flex;
-    gap: 30px;
+    gap: 36px;
     justify-content: center;
-    font-size: 13px;
-    color: rgba(245,240,232,0.5);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: rgba(240,235,226,0.35);
+    text-transform: uppercase;
 }
 
-
-
+/* ============================================================
+   MODAL
+   ============================================================ */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.88);
     z-index: 200;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
 }
 
 .modal.show {
@@ -547,9 +746,8 @@ footer p {
 
 .modal-content {
     background: var(--dark2);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 20px;
-    padding: 44px 40px;
+    border: 1px solid rgba(184,150,90,0.2);
+    padding: 50px 44px;
     width: 100%;
     max-width: 440px;
     position: relative;
@@ -558,82 +756,79 @@ footer p {
 
 .close {
     position: absolute;
-    top: 16px; right: 16px;
-    background: rgba(255,255,255,0.06);
+    top: 18px; right: 18px;
+    background: none;
     border: none;
     color: var(--gray);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
     font-size: 14px;
-    transition: var(--transition);
+    cursor: pointer;
+    width: 30px; height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--transition);
 }
 
 .close:hover {
-    background: rgba(255,255,255,0.12);
     color: var(--white);
 }
 
 .modal-header {
     text-align: center;
-    margin-bottom: 32px;
-}
-
-.modal-icon {
-    font-size: 30px;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 12px;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(184,150,90,0.12);
 }
 
 .modal-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 700;
     color: var(--white);
-    margin-bottom: 6px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
 .modal-header p {
-    font-size: 14px;
+    font-size: 11px;
     color: var(--gray);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .input-group label {
     display: block;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gray);
-    margin-bottom: 8px;
+    margin-bottom: 9px;
 }
 
 .input-group input,
 .input-group select {
     width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
     padding: 13px 16px;
     color: var(--white);
-    font-size: 15px;
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
     transition: var(--transition);
     outline: none;
+    border-radius: 1px;
 }
 
 .input-group input:focus,
 .input-group select:focus {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.05);
+    border-color: rgba(184,150,90,0.5);
+    background: rgba(184,150,90,0.03);
 }
 
 .input-group select option {
@@ -647,43 +842,45 @@ footer p {
     color: var(--black);
     border: none;
     padding: 15px;
-    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
     font-weight: 700;
-    border-radius: var(--radius);
+    letter-spacing: 3px;
+    text-transform: uppercase;
     cursor: pointer;
-    margin-top: 8px;
-    letter-spacing: 1px;
-    font-family: 'Barlow', sans-serif;
+    margin-top: 10px;
     transition: var(--transition);
 }
 
 .btn-submit:hover {
     background: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+    box-shadow: 0 6px 20px rgba(184,150,90,0.25);
 }
 
 #mensagemForm {
     text-align: center;
-    margin-top: 14px;
-    font-size: 14px;
-    min-height: 20px;
+    margin-top: 16px;
+    font-size: 12px;
+    min-height: 18px;
+    letter-spacing: 0.5px;
 }
 
-
-
+/* ============================================================
+   TOAST
+   ============================================================ */
 .toast {
     position: fixed;
-    bottom: 30px;
+    bottom: 32px;
     left: 50%;
     transform: translateX(-50%) translateY(80px);
     background: var(--dark3);
-    border: 1px solid rgba(201,168,76,0.4);
+    border: 1px solid rgba(184,150,90,0.35);
     color: var(--white);
-    padding: 14px 28px;
-    border-radius: 40px;
-    font-size: 14px;
-    font-weight: 600;
+    padding: 13px 30px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     z-index: 300;
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
     opacity: 0;
@@ -696,9 +893,11 @@ footer p {
     opacity: 1;
 }
 
-
+/* ============================================================
+   ANIMAÇÕES
+   ============================================================ */
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
+    from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -708,91 +907,55 @@ footer p {
 }
 
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-
-
-@media (max-width: 768px) {
-    #header {
-        padding: 16px 24px;
-    }
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 900px) {
+    #header { padding: 18px 28px; }
 
     nav {
         display: none;
         position: absolute;
         top: 100%;
         left: 0; right: 0;
-        background: rgba(10,10,10,0.98);
-        padding: 20px;
-        border-bottom: 1px solid rgba(201,168,76,0.2);
+        background: rgba(8,8,8,0.98);
+        padding: 24px 28px;
+        border-bottom: 1px solid rgba(184,150,90,0.15);
     }
 
-    nav.open {
-        display: block;
-    }
+    nav.open { display: block; }
 
     nav ul {
         flex-direction: column;
         align-items: flex-start;
-        gap: 14px;
+        gap: 18px;
     }
 
-    .hamburger {
-        display: block;
-    }
+    .hamburger { display: block; }
 
     .servicos,
-    .agenda-section {
-        padding: 70px 24px;
-    }
+    .agenda-section,
+    .planos { padding: 80px 24px; }
 
-    .section-title {
-        font-size: 32px;
-    }
+    .section-title { font-size: 36px; }
 
-    .hero-stats {
-        gap: 24px;
-    }
+    .cards-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 
-    .agendamento-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
+    .agendamento-item { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .agendamento-meta { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 8px; }
 
-    .agendamento-meta {
-        align-items: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .modal-content {
-        padding: 32px 24px;
-    }
+    .modal-content { padding: 36px 28px; }
 }
 
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 46px;
-    }
-
-    .hero-btns {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn-outline {
-        justify-content: center;
-    }
-
-    .hero-stats {
-        gap: 16px;
-    }
-    
-    .divider-v {
-        display: none;
-    }
+@media (max-width: 520px) {
+    .hero-title { font-size: 52px; }
+    .hero-btns { flex-direction: column; align-items: stretch; }
+    .btn-outline { justify-content: center; }
+    .hero-stats { gap: 20px; }
+    .divider-v { display: none; }
+    .footer-links { flex-direction: column; gap: 10px; }
 }
