@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Barbershop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <header id="header">
+        <div class="logo">
+            <span class="logo-icon">✂</span>
+            <div>
+                <h1>Men's</h1>
+                <span class="logo-sub">BARBERSHOP</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#agendamentos-lista">Agendamentos</a></li>
+                <li><a href="#" id="btnAgendarNav" class="btn-nav">Agendar Agora</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+    </header>
+
+    
+    <section class="hero" id="inicio">
+        <div class="hero-badge">EST. 2024</div>
+        <h2 class="hero-title">Seu Estilo,<br><span class="gold">Nossa Arte.</span></h2>
+        <p class="hero-sub">Cortes modernos, barba e acabamento profissional.<br>Experimente o melhor da barbearia masculina.</p>
+        <div class="hero-btns">
+            <button id="btnAgendar" class="btn-primary">✦ Agendar Agora</button>
+            <a href="#servicos" class="btn-outline">Ver Serviços</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat"><strong>500+</strong><span>Clientes</span></div>
+            <div class="divider-v"></div>
+            <div class="stat"><strong>4</strong><span>Serviços</span></div>
+            <div class="divider-v"></div>
+            <div class="stat"><strong>5★</strong><span>Avaliação</span></div>
+        </div>
+    </section>
+
+    
+    <section class="servicos" id="servicos">
+        <div class="section-label">O QUE OFERECEMOS</div>
+        <h2 class="section-title">Nossos Serviços</h2>
+        <div class="cards-grid">
+            <div class="card" data-servico="Corte">
+                <div class="card-icon">💈</div>
+                <h3>Corte</h3>
+                <p>Corte clássico ou moderno, feito com precisão e estilo.</p>
+                <span class="card-preco">R$ 25</span>
+                <button class="btn-card" onclick="abrirModalComServico('Corte')">Agendar</button>
+            </div>
+            <div class="card destaque" data-servico="Corte + Barba">
+                <div class="card-badge-popular">Popular</div>
+                <div class="card-icon">⚡</div>
+                <h3>Corte + Barba</h3>
+                <p>O combo completo para você sair impecável da cadeira.</p>
+                <span class="card-preco">R$ 40</span>
+                <button class="btn-card" onclick="abrirModalComServico('Corte + Barba')">Agendar</button>
+            </div>
+            <div class="card" data-servico="Barba">
+                <div class="card-icon">🪒</div>
+                <h3>Barba</h3>
+                <p>Navalha quente, acabamento profissional e hidratação.</p>
+                <span class="card-preco">R$ 20</span>
+                <button class="btn-card" onclick="abrirModalComServico('Barba')">Agendar</button>
+            </div>
+            <div class="card" data-servico="Selagem">
+                <div class="card-icon">✨</div>
+                <h3>Selagem</h3>
+                <p>Tratamento para fios com resultado duradouro e brilho.</p>
+                <span class="card-preco">R$ 60</span>
+                <button class="btn-card" onclick="abrirModalComServico('Selagem')">Agendar</button>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="agenda-section" id="agendamentos-lista">
+        <div class="section-label">PAINEL</div>
+        <h2 class="section-title">Agendamentos</h2>
+        <div id="listaAgendamentos" class="lista-agendamentos">
+            <div class="empty-state">
+                <span>📋</span>
+                <p>Nenhum agendamento ainda.<br>Seja o primeiro!</p>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer>
+        <div class="footer-logo">✂ Men's Barbershop</div>
+        <p>© 2024 Men's Barbershop. Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <span>📍 João Pessoa, PB</span>
+            <span>📞 (83) 99000-0000</span>
+        </div>
+    </footer>
+
+   
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close" id="fechar">✕</button>
+            <div class="modal-header">
+                <span class="modal-icon">✂</span>
+                <h2>Agendar Horário</h2>
+                <p>Preencha os dados abaixo</p>
+            </div>
+
+            <form id="formAgendamento">
+                <div class="input-group">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Ex: João Silva" required>
+                </div>
+                <div class="input-group">
+                    <label for="telefone">Telefone / WhatsApp</label>
+                    <input type="tel" id="telefone" placeholder="(83) 99999-9999" required>
+                </div>
+                <div class="input-group">
+                    <label for="servico">Serviço desejado</label>
+                    <select id="servico" required>
+                        <option value="">Escolha o serviço</option>
+                        <option>Corte</option>
+                        <option>Barba</option>
+                        <option>Corte + Barba</option>
+                        <option>Selagem</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="data">Data preferida</label>
+                    <input type="date" id="data" required>
+                </div>
+                <div class="input-group">
+                    <label for="horario">Horário</label>
+                    <select id="horario" required>
+                        <option value="">Escolha o horário</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Confirmar Agendamento</button>
+            </form>
+
+            <p id="mensagemForm"></p>
+        </div>
+    </div>
+
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
